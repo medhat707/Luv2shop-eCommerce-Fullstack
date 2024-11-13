@@ -1,6 +1,6 @@
-# Registration-Management-System-MVC-Application
+# Luv2Shop-eCommerce-Fullstack-Web-Application
 
-An MVC Application that provides a fully functioning login-signup authentication admins to delete, update existing users and also register new users.
+Luv2Shop is a Full Stack Web Application for selling household items and computer accessories, providing a seamless shopping experience
 
 Pre-requisites
 ```
@@ -11,36 +11,45 @@ MySQL
 ```
 
 
-# Project Structure
+# Project Structure BACKEND
 ```
 .
 ├── src
 │   ├──
      ...
      ...
-         └── thymeleafdemo
-            │── aspect
-            └── DemoLoggingAspect.java                      
-            │──controller
-            └── DemoController.java
-            ├──EmployeeController.java
-
-          ├──dao
-             └── EmployeeRepository.java
-             ├── MembersRepository.java
-             ├── MembersRepositoryImpl.java     
+         └── dao
+             └── ProductCategoryRepository.java
+             ├── ProductRepository.java     
 
           │──entity
-             └── Employee.java
-             ├── Members.java
-             ├── Roles.java    
+             └── ProductCategory.java
+             ├── Product.java
    
-         │──security
-              └── DemoSecurityConfig.java
-
-         │──service
-              └── ThymeleafdemoApplication.java
+         │──config
+              └── MyDateRestConfig.java
 
 
 ```
+
+# Project Structure FRONTEND
+```
+Product List Grid Component
+```
+![Product List Grid Component](https://github.com/medhat707/Luv2shop-eCommerce-Fullstack/blob/main/product-list-grid.component.png)
+
+
+
+```
+Search Component
+```
+![Seach Component](https://github.com/medhat707/Luv2shop-eCommerce-Fullstack/blob/main/Product-Seach.png)
+
+
+```
+Product Details Master View
+```
+![Product Details Master View](https://github.com/medhat707/Luv2shop-eCommerce-Fullstack/blob/main/Master-view.png)
+
+
 
