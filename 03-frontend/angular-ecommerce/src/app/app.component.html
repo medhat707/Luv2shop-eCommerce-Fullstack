@@ -3,7 +3,7 @@
     <!-- MENU SIDEBAR-->
     <aside class="menu-sidebar d-none d-lg-block">
         <div class="logo">
-            <a href="home.html">
+            <a routerLink="/products">
                 <img src="assets/images/logo.png" alt="luv2shop" class="img-responsive">
             </a>
         </div>
@@ -22,6 +22,9 @@
                     <div class="header-wrap">
                         <!--replacing form with the seach component selector-->
                         <app-search></app-search>
+
+                        <!-- reference for login status component -->
+                        <app-login-status></app-login-status>
                         <!--
                         <form class="form-header" onsubmit="return false;" method="GET">
                             <input class="au-input au-input-xl" type="text" name="search"
@@ -31,12 +34,9 @@
                             </button>
                         </form>
                         -->
-                        <div class="cart-area d-n">
-                            <a href="shopping-detail.html">
-                                <div class="total">19.22 <span> 2</span> </div> <i class="fa fa-shopping-cart"
-                                    aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        
+                    <!--- shopping cart-->
+                        <app-cart-status></app-cart-status>
                     </div>
                     <div class="account-wrap"></div>
                 </div>
@@ -56,7 +56,7 @@
 <!--ENDS PAGE CONTAINER -->
 
 <footer>
-    <ul>
+    <ul>        
         <li><a href="#">About Us</a></li>
         <li><a href="#">Contact Us</a></li>
         <li><a href="#">Help</a></li>

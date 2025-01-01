@@ -10,7 +10,18 @@ import { Routes ,RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { LoginStatusComponent } from './components/login-status/login-status.component';
 
+import{OktaAuthModule,OktaCallbackComponent,OKTA_CONFIG} from '@okta/okta-angular';
+import { OktaAuth } from '@okta/okta-auth-js';
+import myAppConfig from './config/my-app-config';
+import { from } from 'rxjs';
 
   /*  ------------------- NOTE ---------------------------------------------
     Modifying THE RouterLink TO PASS the categoryName along with the id
@@ -18,14 +29,22 @@ import { ProductDetailsComponent } from './components/product-details/product-de
       {path: 'category/:id/:name' , component:ProductListComponent},
     -------------------------------------------------------------------------
   */
+
+const oktaConfig = myAppConfig.oidc;
+const oktaAuth = new OktaAuth(oktaConfig);
 const routes : Routes= [
-  
-  {path:'products/:id',component:ProductDetailsComponent}, 
+  {path: 'login/callback' , component:OktaCallbackComponent},
+  {path: 'login' , component:LoginComponent},
+  {path:'products/:id/:catId',component:ProductDetailsComponent}, 
   {path: 'search/:keyword' , component:ProductListComponent},
   {path: 'category/:id' , component:ProductListComponent},
   {path: 'category/:id/:name' , component:ProductListComponent},
   { path: 'category' , component:ProductListComponent},
   { path: 'products' , component:ProductListComponent},
+  { path: 'cart-details' , component:CartDetailsComponent},
+  { path: 'checkout' , component:CheckoutComponent},
+
+//  { path: 'products/:catId' , component:ProductListComponent},
   { path: '' , redirectTo: '/products' , pathMatch:'full'},
   { path: '**' , redirectTo: '/products' , pathMatch:'full'}
 ];
@@ -36,15 +55,23 @@ const routes : Routes= [
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent,
+    CartDetailsComponent,
+    CheckoutComponent,
+    LoginComponent,
+    LoginStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    ReactiveFormsModule,
+    OktaAuthModule
   ],
-  providers: [ProductService],
+  providers: [ProductService , {provide: OKTA_CONFIG, useValue: {oktaAuth}}], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
